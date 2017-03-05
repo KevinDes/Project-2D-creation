@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>D:/Users/Kévin/Desktop/Projet C++/sans_titre/player.png</file>
+    </qresource>
+</RCC>
