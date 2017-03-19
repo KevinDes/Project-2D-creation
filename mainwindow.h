@@ -10,6 +10,7 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QPen>
+#include <QGraphicsView>
 
 namespace Ui {
 class MainWindow;
@@ -49,6 +50,8 @@ private slots:
 
     void on_buttonLoad_clicked();
 
+    void on_buttonSave_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
@@ -56,7 +59,7 @@ private:
     QGraphicsLineItem *lines;
     QGraphicsItem *arc;
 
-
+    QGraphicsView *view;
 
 };
 

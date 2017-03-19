@@ -13,8 +13,12 @@
 #include <QPen>
 #include <QRectF>
 #include <QFileDialog>
+#include <QPixmap>
+#include <QByteArray>
+#include <QBuffer>
 
 
+//pixel size = 0.66mm
 
 
 
@@ -25,8 +29,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     scene = new QGraphicsScene(this);
 
-    //ui->comboBox->addItem("Hello");
 
+    ui->comboBox->addItem("Tree");
+    ui->comboBox->addItem("Tree2");
+    ui->comboBox->addItem("Tree3");
+    ui->comboBox->addItem("Tree4");
 }
 
 
@@ -92,6 +99,7 @@ void MainWindow::on_buttonOk_clicked()
         lines = scene->addLine(xValue1,yValue1,xValue1,yValue1,blackPen);
 
 
+
     }
 
     else if( ui->labelInfo->text() == QString("Choose 2 points for a line : ") )
@@ -147,10 +155,10 @@ void MainWindow::on_buttonOk_clicked()
         QPen blackPen(Qt::black);
         blackPen.setWidth(4);
 
-        point1 = xValue1-radiuss;
-        point2 = yValue1-radiuss;
-        point3 = xValue1+radiuss+((1/6)*radiuss);
-        point4 = yValue1+radiuss+((1/6)*radiuss);
+        point1 = xValue1-((radiuss-xValue1)/2);
+        point2 = yValue1-((radiuss-yValue1)/2);
+        point3 = point1-radiuss;
+        point4 = point2-radiuss;
 
         ellipse = scene->addEllipse(point1,point2,point3,point4,blackPen);
 
@@ -178,6 +186,7 @@ void MainWindow::on_buttonOk_clicked()
         painter.drawArc(rectangle, startAngle, spanAngle);
 
 
+
     }
 }
 
@@ -193,12 +202,37 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 void MainWindow::on_buttonLoad_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
-                                                       QDir::currentPath(),
-                                                        tr("Images (*.jpeg *.jpg)"));
-        QImage image(fileName);
+                                                    QDir::currentPath(),
+                                                    tr("Images (*.jpeg *.jpg)"));
+    QImage image(fileName);
 
-        QPixmap pixmap(fileName);
-        scene->addPixmap(pixmap);
-        ui->graphicsView->setScene(scene);
-        ui->graphicsView->show();
+    QPixmap pixmap(fileName);
+    scene->addPixmap(pixmap);
+    ui->graphicsView->setScene(scene);
+    ui->graphicsView->show();
+
+}
+
+
+void MainWindow::on_buttonSave_clicked()
+{
+
+
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Save Image"), "",
+                                                    tr("Image(*.jpeg *.jpg);;All Files (*)"));
+
+    if(fileName != "")
+        {
+            QImage image(fileName);
+
+            QPixmap pixmap(fileName);
+
+            //The loop runs properly
+            //just problem of black picture after saving
+            if(pixmap.save(fileName))
+                QMessageBox::information(0,"Done","Done");
+            else
+                QMessageBox::critical(0,"Error","Error");
+        }
 }
