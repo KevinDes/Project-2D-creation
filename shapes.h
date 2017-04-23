@@ -40,7 +40,6 @@ private slots:
 private:
     Ui::shapes *ui;
 
-
 signals:
     void choice(int decision);
 };

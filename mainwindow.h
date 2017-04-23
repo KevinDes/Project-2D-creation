@@ -18,14 +18,14 @@ public:
     ~MainWindow();
 
     int xValue1,yValue1,xValue2,yValue2,xValue3,yValue3,xValue4,yValue4,xValue5,yValue5;
-    int radiuss,point1,point2,point3,point4;
+
+    void mouseMoveEvent (QMouseEvent * event);
 
 
 private slots:
     void changeDecision(int decision);
     void on_pushButton_released();
 
-    //void on_buttonOk_clicked(int decision);
 
 private:
     Ui::MainWindow *ui;
@@ -34,6 +34,7 @@ private:
     shapes *shapess;
     QGraphicsLineItem *lines;
     QGraphicsEllipseItem *circle;
+
 };
 
 #endif // MAINWINDOW_H

@@ -1,5 +1,10 @@
 #include "shapes.h"
 #include "ui_shapes.h"
+#include "mainwindow.h"
+
+#include <QMessageBox>
+
+using namespace std;
 
 shapes::shapes(QWidget *parent) :
     QDialog(parent),
@@ -13,9 +18,13 @@ shapes::~shapes()
     delete ui;
 }
 
+
+//Every button functions to emit a signal to the mainWindow
 void shapes::on_buttonLine_clicked()
 {
     emit choice(1);
+    //the comboBox will receive the name of the item which is
+    //created with an associated number
     ui->comboBox->addItem("Line " + QString ::number(l));
     l++;
 }
@@ -36,9 +45,23 @@ void shapes::on_buttonCurve_clicked()
 
 void shapes::on_buttonCircle_clicked()
 {
-    emit choice(4);
-    ui->comboBox->addItem("Circle " + QString ::number(ci));
-    ci++;
+    QMessageBox msgBox;
+    msgBox.setText("The circle is an incircle of a rectangle.");
+    msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+    int circ = msgBox.exec();
+
+    switch (circ)
+    {
+      case QMessageBox::Ok:
+          emit choice(4);
+          ui->comboBox->addItem("Circle " + QString ::number(ci));
+          ci++;
+          break;
+
+      case QMessageBox::Cancel:
+          // Cancel was clicked
+          break;
+    }
 }
 
 void shapes::on_buttonPoint_clicked()
@@ -55,7 +78,21 @@ void shapes::on_buttonLength_clicked()
 
 void shapes::on_buttonDel_clicked()
 {
-    emit choice(7);
+    QMessageBox msgBox;
+    msgBox.setText("This action will erase everything with a link with writting dimensions.");
+    msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+    int erasee = msgBox.exec();
+
+    switch (erasee)
+    {
+      case QMessageBox::Ok:
+          emit choice(7);
+          break;
+
+      case QMessageBox::Cancel:
+          // Cancel was clicked
+          break;
+    }
 }
 
 
