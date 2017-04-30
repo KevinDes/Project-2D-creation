@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>DrawArc.png</file>
+        <file>DrawCircle.png</file>
+    </qresource>
+</RCC>

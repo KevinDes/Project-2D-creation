@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include "shapes.h"
+#include "help.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,15 +18,20 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    int xValue1,yValue1,xValue2,yValue2,xValue3,yValue3,xValue4,yValue4,xValue5,yValue5;
+    //coordinates of each shapes
+    int xValue1,yValue1,xValue2,yValue2,xValue3,yValue3,xValue4,yValue4,xValue5,yValue5,angle;
 
-    void mouseMoveEvent (QMouseEvent * event);
+    //mousePressEvent
+    void mousePressEvent (QMouseEvent * event);
 
 
 private slots:
+    //slot to receive signal from shapes
     void changeDecision(int decision);
     void on_pushButton_released();
 
+
+    void on_pushButton_help_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -34,6 +40,7 @@ private:
     shapes *shapess;
     QGraphicsLineItem *lines;
     QGraphicsEllipseItem *circle;
+    Help * helps;
 
 };
 

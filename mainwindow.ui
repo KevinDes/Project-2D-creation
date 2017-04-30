@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1239</width>
-    <height>681</height>
+    <width>1333</width>
+    <height>770</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -149,8 +149,8 @@
      <rect>
       <x>20</x>
       <y>50</y>
-      <width>1021</width>
-      <height>571</height>
+      <width>1051</width>
+      <height>631</height>
      </rect>
     </property>
    </widget>
@@ -234,13 +234,49 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>250</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Angle :</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_9">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>270</y>
+      <width>113</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_help">
+    <property name="geometry">
+     <rect>
+      <x>1120</x>
+      <y>310</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>HELP</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1239</width>
+     <width>1333</width>
      <height>21</height>
     </rect>
    </property>

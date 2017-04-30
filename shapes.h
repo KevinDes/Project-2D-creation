@@ -16,9 +16,11 @@ public:
     explicit shapes(QWidget *parent = 0);
     ~shapes();
 
+    //counter
     int l=1, m=1, cu=1, ci=1, p=1;
 
 private slots:
+    //creation of each buttons
     void on_buttonLine_clicked();
 
     void on_buttonMultiple_clicked();
@@ -28,8 +30,6 @@ private slots:
     void on_buttonCircle_clicked();
 
     void on_buttonPoint_clicked();
-
-    void on_buttonLength_clicked();
 
     void on_buttonDel_clicked();
 
@@ -41,6 +41,7 @@ private:
     Ui::shapes *ui;
 
 signals:
+    //signal to give the decision
     void choice(int decision);
 };
 
