@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     shapes.cpp \
-    help.cpp
+    help.cpp \
+    shapewidget.cpp
 
 HEADERS  += mainwindow.h \
     shapes.h \
-    help.h
+    help.h \
+    shapewidget.h
 
 FORMS    += mainwindow.ui \
     shapes.ui \

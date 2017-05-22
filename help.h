@@ -16,9 +16,6 @@ public:
     explicit Help(QWidget *parent = 0);
     ~Help();
 
-private slots:
-    //void on_pushButton_show_clicked();
-
 private:
     Ui::Help *ui;
     QGraphicsScene *scene;

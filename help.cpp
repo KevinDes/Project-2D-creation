@@ -15,8 +15,11 @@ Help::Help(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //Integration of two pictures in the UI
     ui->label->show();
     ui->label_2->show();
+
+    //the rest is in the help.ui file
 }
 
 Help::~Help()

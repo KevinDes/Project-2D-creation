@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "shapes.h"
-#include "help.h"
 
 #include <QString>
 #include <QPainter>
@@ -28,7 +26,6 @@ MainWindow::MainWindow(QWidget *parent) :
     //connection by signal and slot between shapes and mainwindow
     connect(shapess, &shapes::choice,
             this, &MainWindow::changeDecision);
-
 }
 
 //destructor of the mainWindow
@@ -43,9 +40,6 @@ void MainWindow::changeDecision(int decision)
 {
     if (decision == 1)//Draw a line
     {
-        //add the scene to the graphicsView
-        ui->graphicsView->setScene(scene);
-
         //transform the lineEdit texts into integers
         xValue1 = ui->lineEdit->text().toInt();
         yValue1 = ui->lineEdit_2->text().toInt();
@@ -79,9 +73,6 @@ void MainWindow::changeDecision(int decision)
 
     else if (decision == 2)//draw multiple lines
     {
-        //add the scene to the graphicsView
-        ui->graphicsView->setScene(scene);
-
         //transform the lineEdit texts into integers
         xValue1 = ui->lineEdit->text().toInt();
         yValue1 = ui->lineEdit_2->text().toInt();
@@ -111,16 +102,13 @@ void MainWindow::changeDecision(int decision)
                "yValue1 = " + ui->lineEdit_2->text() + " \r\n" +
                "xValue2 = " + ui->lineEdit_3->text()+ " \r\n" +
                "yValue2 = " + ui->lineEdit_4->text()+ " \r\n" +
-               "yValue1 = " + ui->lineEdit_5->text() + " \r\n" +
-               "xValue2 = " + ui->lineEdit_6->text()+ " \r\n" +
-               "xValue2 = " + ui->lineEdit_7->text()+ " \r\n" +
-               "yValue2 = " + ui->lineEdit_8->text() + " \r\n\r\n";
+               "xValue3 = " + ui->lineEdit_5->text() + " \r\n" +
+               "yValue3 = " + ui->lineEdit_6->text()+ " \r\n" +
+               "xValue4 = " + ui->lineEdit_7->text()+ " \r\n" +
+               "yValue4 = " + ui->lineEdit_8->text() + " \r\n\r\n";
     }
     else if (decision == 3)//draw an arc
     {
-        //add the scene to the graphicsView
-        ui->graphicsView->setScene(scene);
-
         //transform the lineEdit texts into integers
         xValue1 = ui->lineEdit->text().toInt();
         yValue1 = ui->lineEdit_2->text().toInt();
@@ -164,9 +152,6 @@ void MainWindow::changeDecision(int decision)
 
     else if (decision == 4)//draw a circle
     {
-        //add the scene to the graphicsView
-        ui->graphicsView->setScene(scene);
-
         //transform the lineEdit texts into integers
         xValue1 = ui->lineEdit->text().toInt();
         yValue1 = ui->lineEdit_2->text().toInt();
@@ -192,16 +177,13 @@ void MainWindow::changeDecision(int decision)
             return;
 
         QTextStream out(&file);
-        out << "Curve =>\r\nxValue1 = " + ui->lineEdit->text()+ " \r\n" +
+        out << "Circle =>\r\nxValue1 = " + ui->lineEdit->text()+ " \r\n" +
                "yValue1 = " + ui->lineEdit_2->text() + " \r\n" +
                "xValue2 = " + ui->lineEdit_3->text() + " \r\n" +
                "yValue2 = " + ui->lineEdit_4->text() + " \r\n\r\n";
     }
     else if (decision == 5)//draw a point
     {
-        //add the scene to the graphicsView
-        ui->graphicsView->setScene(scene);
-
         //transform the lineEdit texts into integers
         xValue1 = ui->lineEdit->text().toInt();
         yValue1 = ui->lineEdit_2->text().toInt();
@@ -285,15 +267,17 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     if(event->button()==Qt::LeftButton)
     {
         //put coordinates in lineEdit and lineEdit_2
-        ui->lineEdit ->setText(QString::number(event->x()));
-        ui ->lineEdit_2 ->setText(QString::number(event->y()));
+        ui->lineEdit ->setText(QString::number(event->x()-473-41+25));
+        ui ->lineEdit_2 ->setText(QString::number(event->y()-250-78+25));
+        //-473
+        //-250
     }
     //if the right clic is pressed
     else if(event->button()==Qt::RightButton)
     {
         //put coordinates in lineEdit_3 and lineEdit_4
-        ui->lineEdit_3 ->setText(QString::number(event->x()));
-        ui ->lineEdit_4 ->setText(QString::number(event->y()));
+        ui->lineEdit_3 ->setText(QString::number(event->x()-473-41+25));
+        ui ->lineEdit_4 ->setText(QString::number(event->y()-250-78+25));
     }
 }
 

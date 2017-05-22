@@ -6,8 +6,9 @@
 
 using namespace std;
 
+//http://forum.qtfr.org/discussion/11510/laisser-une-fenetre-en-premier-plan
 shapes::shapes(QWidget *parent) :
-    QDialog(parent),
+    QDialog(parent,Qt::WindowStaysOnTopHint),
     ui(new Ui::shapes)
 {
     ui->setupUi(this);
@@ -70,7 +71,7 @@ void shapes::on_buttonCircle_clicked()
 {
     //creation of a dialogBox to verify the choice of the user
     QMessageBox msgBox;
-    msgBox.setText("The circle is an incircle of a rectangle.");
+    msgBox.setText("The circle is an incircle of a rectangle. (ref to the HELP)");
     msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
     int circ = msgBox.exec();
 
@@ -83,7 +84,6 @@ void shapes::on_buttonCircle_clicked()
           break;
 
       case QMessageBox::Cancel:
-          // Cancel was clicked
           break;
     }
 }
@@ -99,7 +99,7 @@ void shapes::on_buttonDel_clicked()
 {
     //creation of a dialogBox to verify the choice of the user
     QMessageBox msgBox;
-    msgBox.setText("This action will erase everything with a link with writting dimensions.");
+    msgBox.setText("This action will erase everything which has a link with writting dimensions.");
     msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
     int erasee = msgBox.exec();
 
@@ -110,7 +110,6 @@ void shapes::on_buttonDel_clicked()
           break;
 
       case QMessageBox::Cancel:
-          // Cancel was clicked
           break;
     }
 }
